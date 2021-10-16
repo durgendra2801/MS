@@ -1,0 +1,16 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: fscm-config-server
+  cloud:
+    config:
+      server:
+        git:
+          skip-ssl-validation: true
+          timeout: 5
+          uri: file://C://DATA//GIT_REPO
+  security:
+    user:
+      name: admin
+      password: admin

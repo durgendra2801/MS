@@ -1,0 +1,27 @@
+spring:
+  main:    web-application-type: reactive 
+  application:    name: fscm-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: FSCM-APPLY-FINANCE
+          uri: lb://FSCM-APPLY-FINANCE
+          predicates:
+            - Path=/apply-finance/**
+        - id: FSCM-INVOICE-ENTRY
+          uri: lb://FSCM-INVOICE-ENTRY
+          predicates:
+            - Path=/invoice-entry/**
+    
+server:  port: 9191
+    
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
